@@ -2,9 +2,6 @@ import { useState } from 'react'
 import {
   createBrowserRouter,
   RouterProvider,
-  createRoutesFromElements,
-  Route,
-  Routes,
 } from "react-router-dom";
 
 /*  ------- PAGES ------  */
