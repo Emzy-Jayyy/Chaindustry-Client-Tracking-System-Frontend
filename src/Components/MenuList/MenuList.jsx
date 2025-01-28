@@ -14,7 +14,7 @@ const MenuList = ({toggle}) => {
         <Link to='prospects'>Prospects</Link>
       </Menu.Item>
       <Menu.Item className='flex flex-align' key="clients" icon = {<ClientsIcon width={20} height={15}/>}>
-        <Link to='project'>{!toggle && 'Clients'}</Link>
+        <Link to='clients'>{!toggle && 'Clients'}</Link>
       </Menu.Item>
       <Menu.Item key="schedules" icon = {<FieldTimeOutlined />}>
         <Link to='schedule'>schedules</Link>

@@ -23,7 +23,7 @@ const LineChart = () => {
     datasets: [
       {
         label: "Income per month ($3,000)",
-        data: [5000, 7000, 2000, 6000, 5000, 5000, 8000, 9000, 10000],
+        data: [5000, 7000, 3000, 6000, 5000, 5000, 8000, 9000, 10000],
         borderColor: "rgba(75,192,192,1)",
         backgroundColor: "rgba(75,192,192,0.2)",
         tension: 0.4,

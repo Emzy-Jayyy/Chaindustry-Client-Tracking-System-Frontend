@@ -19,6 +19,7 @@ import ForgotPassword from './Pages/Forgotpassword/ForgotPassword';
 import RootLayout from './Layouts/RootLayout';
 import DashoardLayout from './Layouts/DashoardLayout';
 import './App.css'
+import Clients from './Pages/ClientsPage/Clients';
 
 function App() {
   // const routes = createRoutesFromElements(
@@ -49,7 +50,8 @@ function App() {
             {index: true, element: <Dashboard />},
             {path: 'project', element: <Projects />},
             {path: 'schedule', element: <Schedule />},
-            {path: 'prospects', element: <Prospects />}
+            {path: 'prospects', element: <Prospects />},
+            {path: 'clients', element: <Clients />}
           ] 
         },
       ],
