@@ -2,9 +2,7 @@ import React from 'react'
 
 const SideBarContent = ({text, icon}) => {
   return (
-    <div>
-        
-    </div>
+    <div>SideBarContent</div>
   )
 }
 

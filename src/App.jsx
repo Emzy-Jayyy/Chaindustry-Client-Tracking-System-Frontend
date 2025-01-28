@@ -1,49 +1,46 @@
 import { useState } from 'react'
-import { 
+import {
   createBrowserRouter,
   RouterProvider,
   createRoutesFromElements,
   Route,
- } from 'react-router-dom'
+  Routes,
+} from "react-router-dom";
 
- /*------------PAGES--------- */
- import Dashboard from './Pages/Dashboard/Dashboard.jsx';
- import NotFound from './Pages/NotFound/NotFound.jsx';
- import Profile from './Pages/Profile/Profile.jsx';
- import Project from './Pages/Project/Project.jsx';
- import Prospect from './Pages/Prospect/Prospect.jsx';
- import Schedule from './Pages/Schedule/Schedule.jsx';
- import Login from './Pages/Login/Login.jsx';
- import Signup from './Pages/Signup/Signup.jsx';
- import ForgotPassword from './Pages/ForgotPassword/ForgotPassword.jsx';
+/*  ------- PAGES ------  */
+import Dashboard from './Pages/Dashboard/Dashboard';
+import NotFound from './Pages/NotFound/NotFound';
+import Profile from './Pages/Profile/Profile';
+import Prospects from './Pages/Prospects/Prospects';
+import Schedule from './Pages/Schedule/Schedule';
+import Login from './Pages/Login/Login';
+import Signup from './Pages/Signup/Signup';
+import Projects from './Pages/Projects/Projects';
+import ForgotPassword from './Pages/Forgotpassword/ForgotPassword';
 
-  /*------------LAYOUT--------- */
-  import RootLayout from './Layouts/RootLayout.jsx';
-  import DashboardLayout from './Layouts/DashboardLayout.jsx';
+/*  ------- LAYOUTS ------  */
+import RootLayout from './Layouts/RootLayout';
+import DashoardLayout from './Layouts/DashoardLayout';
 import './App.css'
-
 
 function App() {
   const routes = createRoutesFromElements(
-    <Route path='/' element={<RootLayout />}>
-      <Route index element={<Login />} />
-      <Route path='signup' element={<Signup />} />
-      <Route path='forgot' element={<ForgotPassword />} />
-      <Route path='dashboard' element={<DashboardLayout />}>
-        <Route index element={<Dashboard />} />
-        <Route path='project' element={<Project />} />
-        <Route path='Schedule' element={<Schedule />} />
-        <Route path='Prospects' element={<Prospect />} />
-        <Route path='Profile' element={<Profile />} />
-        <Route path='NotFound' element={<NotFound />} />
+    <Route path='/' element={<RootLayout/>}>
+      <Route index element={<Login/>}/>
+      <Route path='signup' element={<Signup/>}/>
+      <Route path='forgot' element={<ForgotPassword/>}/>
+      <Route path='dashboard' element={<DashoardLayout/>}>
+        <Route index element={<Dashboard/>}/>
+        <Route path='project' element={<Projects/>}/>
+        <Route path='schedule' element={<Schedule/>}/>
+        <Route path='prospects' element={<Prospects/>}/>
       </Route>
     </Route>
-  );
+  )
   const router = createBrowserRouter(routes);
-
   return (
     <RouterProvider router={router}>
-      
+
     </RouterProvider>
   )
 }
