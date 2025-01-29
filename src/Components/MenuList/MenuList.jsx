@@ -13,8 +13,8 @@ const MenuList = ({toggle}) => {
       <Menu.Item key="prospects" icon = {<UsergroupAddOutlined />}>
         <Link to='prospects'>Prospects</Link>
       </Menu.Item>
-      <Menu.Item className='flex flex-align' key="clients" icon = {<ClientsIcon width={20} height={15}/>}>
-        <Link to='clients'>{!toggle && 'Clients'}</Link>
+      <Menu.Item className='flex flex-align' key="clients" icon = {<ClientsIcon  width={20} height={15}/>}>
+        <Link  to='clients'>{!toggle && 'Clients'}</Link>
       </Menu.Item>
       <Menu.Item key="schedules" icon = {<FieldTimeOutlined />}>
         <Link to='schedule'>schedules</Link>

@@ -15,33 +15,58 @@ import MenuList from '../Components/MenuList/MenuList';
 // 16px -> 1rem
 const DashoardLayout = () => {
   const [userName, setUserName] = useState('Iniemem');
-  const [isToggle, setIsToggle] = useState(false)
+  const [isToggle, setIsToggle] = useState(false);
+
 
     return (
-    <Layout>
-      <Sider collapsed={isToggle} style={{background: 'white', borderRight: '1px solid #ddd', height: 'auto'}}>
-        <MenuList toggle = {isToggle}/>
-      </Sider>
-      <Layout>
-        <Header style={{background: 'white', padding: '0 20px'}} className='flex flex-justify-between flex-align'>
-          <div className='flex flex-align'>
-            <Button type='button' icon ={<MenuFoldOutlined/>}  
-            onClick={()=>setIsToggle(!isToggle)}       
-            ></Button>
-            <p style={{fontWeight: 500}}>Welcome {userName}</p>
-          </div>
-          <div className='flex flex-align' style={{gap: 10}}>
-            <Button icon={<UserOutlined />}></Button>
-            <Button icon={<AlertOutlined />}></Button>
-          </div>
-        </Header>
-        <Content style={{background: '#fcfcfc'}}>
-          <Outlet/>
-        </Content>
+      <Layout hasSider>
+        <Sider
+          collapsed={isToggle}
+          style={{
+            background: "white",
+            borderRight: "1px solid #ddd",
+            height: "100vh",
+            position: "sticky",
+            top: 0,
+            bottom: 0,
+            overflow: "auto",
+            scrollbarWidth: "none",
+            scrollbarGutter: "stable",
+          }}
+        >
+          <MenuList toggle={isToggle} />
+        </Sider>
+        <Layout>
+          <Header
+            style={{ 
+              background: 'white', 
+              padding: '0 20px', 
+              position: 'sticky', 
+              top: 0, 
+              zIndex: 1000, 
+              width: '100%',
+            }}
+            className="flex flex-justify-between flex-align"
+          >
+            <div className="flex flex-align">
+              <Button
+                type="button"
+                icon={<MenuFoldOutlined />}
+                onClick={() => setIsToggle(!isToggle)}
+              ></Button>
+              <p style={{ fontWeight: 500 }}>Welcome {userName}</p>
+            </div>
+            <div className="flex flex-align" style={{ gap: 10 }}>
+              <Button icon={<UserOutlined />}></Button>
+              <Button icon={<AlertOutlined />}></Button>
+            </div>
+          </Header>
+          <Content style={{ background: "#fcfcfc" }}>
+            <Outlet />
+          </Content>
+        </Layout>
       </Layout>
-
-    </Layout>
-  )
+    );
 }
 
 export default DashoardLayout
