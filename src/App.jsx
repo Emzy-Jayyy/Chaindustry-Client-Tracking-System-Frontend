@@ -51,7 +51,8 @@ function App() {
             {path: 'project', element: <Projects />},
             {path: 'schedule', element: <Schedule />},
             {path: 'prospects', element: <Prospects />},
-            {path: 'clients', element: <Clients />}
+            {path: 'clients', element: <Clients />},
+            {path: 'profile', element: <Profile />}
           ] 
         },
       ],

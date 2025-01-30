@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 import { Outlet } from 'react-router-dom'
 import {  Button, Layout } from 'antd';
 const { Header, Sider, Content } = Layout;
@@ -57,7 +58,9 @@ const DashoardLayout = () => {
               <p style={{ fontWeight: 500 }}>Welcome {userName}</p>
             </div>
             <div className="flex flex-align" style={{ gap: 10 }}>
-              <Button icon={<UserOutlined />}></Button>
+              <Link to='profile'>
+                <Button icon={<UserOutlined />}></Button>
+              </Link>
               <Button icon={<AlertOutlined />}></Button>
             </div>
           </Header>
