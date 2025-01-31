@@ -71,14 +71,53 @@ const Prospects = () => {
           matrixs={50}
         />
       </section>
-      <section style={{ gap: 20, marginTop: 20 }} className='flex flex-justify-between flex-center'>
-        <div className='flex ' style={{gap: '5px', margin: '30px 0'}}>
-          <Button style={{width: '83px', height:'42px', borderRadius: '10px', borderWidth: '1px'}}>All</Button>
-          <Button style={{width: '83px', height:'42px', borderRadius: '10px', borderWidth: '1px'}}>Cold</Button>
-          <Button style={{width: '83px', height:'42px', borderRadius: '10px', borderWidth: '1px'}}>Warm</Button>
-          <Button style={{width: '83px', height:'42px', borderRadius: '10px', borderWidth: '1px'}}>Contract</Button>
+      <section
+        style={{ gap: 20, marginTop: 20 }}
+        className="flex flex-justify-between flex-center"
+      >
+        <div className="flex " style={{ gap: "5px", margin: "30px 0" }}>
+          <Button
+            style={{
+              width: "83px",
+              height: "42px",
+              borderRadius: "10px",
+              borderWidth: "1px",
+            }}
+          >
+            All
+          </Button>
+          <Button
+            style={{
+              width: "83px",
+              height: "42px",
+              borderRadius: "10px",
+              borderWidth: "1px",
+            }}
+          >
+            Cold
+          </Button>
+          <Button
+            style={{
+              width: "83px",
+              height: "42px",
+              borderRadius: "10px",
+              borderWidth: "1px",
+            }}
+          >
+            Warm
+          </Button>
+          <Button
+            style={{
+              width: "83px",
+              height: "42px",
+              borderRadius: "10px",
+              borderWidth: "1px",
+            }}
+          >
+            Contract
+          </Button>
         </div>
-        <Switch onChange={onChange}/>
+        <Switch checkedChildren="Table" unCheckedChildren="Grid" onChange={onChange} />
       </section>
       {view === "grid" && (
         <section className="flex" style={{ gap: 20, marginTop: 20 }}>
