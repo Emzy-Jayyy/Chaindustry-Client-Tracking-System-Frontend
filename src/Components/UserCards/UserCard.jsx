@@ -1,12 +1,28 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
-import { Card } from 'antd';
 import './UserCard.css'
-import { LinkOutlined, TwitchOutlined, TwitterOutlined, UserOutlined } from '@ant-design/icons';
+import { LinkOutlined, TwitterOutlined, UserOutlined } from '@ant-design/icons';
 
-const {Meta} = Card; 
+function truncateURL(url, maxLength = 30) {
+  if (!url || typeof url !== "string") return ""; // Prevent errors by returning an empty string if URL is undefined/null
 
-const UserCard = ({name, role, profileLink, socialHandle, image, link}) => {
+  try {
+    const urlObj = new URL(url);
+    const domain = urlObj.origin;
+    const path = urlObj.pathname;
+
+    if (domain.length + 3 >= maxLength) return domain;
+
+    const remainingLength = maxLength - domain.length - 3;
+    return domain + (path.length > remainingLength ? path.substring(0, remainingLength) + "..." : path);
+  } catch (error) {
+    return url.length > maxLength ? url.substring(0, maxLength) + "..." : url; // Fallback for invalid URLs
+  }
+}
+
+
+
+const UserCard = ({name, role, portfolioLink, socialHandle, image, link}) => {
   return (
     <>
       <Link
@@ -25,7 +41,7 @@ const UserCard = ({name, role, profileLink, socialHandle, image, link}) => {
       >
         <ul className='flex flex-column flex-justify-between'>
             <li style={{fontStyle: 'bold' }}><UserOutlined/> {name}</li>
-            <li><LinkOutlined /> {profileLink}</li>
+            <li><LinkOutlined /> {truncateURL(portfolioLink,30)}</li>
             <li><TwitterOutlined/> {socialHandle}</li>
         </ul>
         <img src={image} alt={name?.charAt(0).toupperCase} style={{borderRadius: '50%', height: '5.5rem', width:'5.5rem', objectFit: 'cover'}} />
