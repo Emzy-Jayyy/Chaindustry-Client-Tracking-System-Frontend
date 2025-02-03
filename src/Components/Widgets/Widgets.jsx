@@ -6,8 +6,8 @@ const Widgets = ({icon, text, matrixs}) => {
         {icon}
       </div>
       <div >
-        <p style={{fontSize: '0.75rem', color: '#737373'}}>{text}</p>
-        <h2 style={{fontSize: '1.2rem', color: '#737373'}}>{matrixs}</h2>
+        <p style={{fontSize: '0.94rem', color: '#737373', fontWeight: 500}}>{text}</p>
+        <h2 style={{fontSize: '2rem', color: '#737373', fontWeight:600}}>{matrixs}</h2>
       </div>
     </div>
   )

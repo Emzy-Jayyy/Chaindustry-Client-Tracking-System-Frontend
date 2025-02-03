@@ -17,7 +17,7 @@ const MenuList = ({toggle}) => {
         <Link  to='clients'>{!toggle && 'Clients'}</Link>
       </Menu.Item>
       <Menu.Item key="schedules" icon = {<FieldTimeOutlined />}>
-        <Link to='schedule'>schedules</Link>
+        <Link to='schedule'>Schedules</Link>
       </Menu.Item>
     </Menu>
   )

@@ -8,6 +8,7 @@ import './prospects.css'
 import UserCard from '../../Components/UserCards/UserCard'
 import ProspectsTable from '../../Components/Tables/ProspectsTable'
 import { Form } from 'react-router-dom'
+import ContentHeader from '../../Components/ContentHeader/ContentHeader'
 // import Tab from '../../Components/Tabs/Tab'
 
 
@@ -36,16 +37,7 @@ const Prospects = () => {
 
   return (
     <main style={{ padding: "20px" }}>
-      <div className="flex flex-justify-between flex-align">
-        <h1 style={{ fontSize: "2rem" }}>Prospects</h1>
-        <Button
-          icon={<PlusCircleFilled />}
-          style={{ borderRadius: "10px", height: 45 }}
-          onClick={showModal}
-        >
-          Add Prospect
-        </Button>
-      </div>
+      <ContentHeader title={'Prospect'} modal={showModal} buttonInfo={'Add Prospect'}/>
       <section
         className="classes.prospects-widget flex"
         style={{ gap: 20, marginTop: 20 }}
@@ -117,7 +109,11 @@ const Prospects = () => {
             Contract
           </Button>
         </div>
-        <Switch checkedChildren="Table" unCheckedChildren="Grid" onChange={onChange} />
+        <Switch
+          checkedChildren="Table"
+          unCheckedChildren="Grid"
+          onChange={onChange}
+        />
       </section>
       {view === "grid" && (
         <section className="flex" style={{ gap: 20, marginTop: 20 }}>
