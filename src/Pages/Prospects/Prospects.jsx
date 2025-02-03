@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { Button, Modal, Switch } from 'antd'
+import React, { useEffect, useState } from 'react'
+import { Button, Modal, Switch, Input, Space } from 'antd'
 import Widgets from '../../Components/Widgets/Widgets'
 import { ColdProspectIcon, ContractsIcon, ProspectsIcon, WarmProspectIcon } from '../../Components/Icons/Icons'
 import { PlusCircleFilled } from '@ant-design/icons'
@@ -11,13 +11,34 @@ import { Form } from 'react-router-dom'
 import ContentHeader from '../../Components/ContentHeader/ContentHeader'
 // import Tab from '../../Components/Tabs/Tab'
 
+const { Search } = Input
+const onSearch = (value, _e, info) => console.log(info?.source, value);
 
 const Prospects = () => {
-  const prospectData = [
+  const [isProspectData, setIsProspectData] = useState([
     {role: 'warm', portfolioLink: 'https://www.figma.com/aigsiufgsuifgdsuifsuifsuifsuidfsuifsuif', socialHandle: '@chaindustry', name: 'chaindustry'},
     {role: 'cold', portfolioLink: 'https://www.figma.com/sidfsiufsuifsduifsduifsduifuisdfuisdfsd', socialHandle: '@chaindustry', name: 'chaindustry'},
     {role: 'contract', portfolioLink: 'https://www.figma.com/fuisfsuifsduifsduifduifsduifsduifsd', socialHandle: '@chaindustry', name: 'chaindustry'},
-  ]
+  ])
+
+  const [filteredData, setFilteredData] = useState([]);
+
+  useEffect(() => {
+    setFilteredData(isProspectData)
+  }, [isProspectData])
+
+  function handleFilteredData(role) {
+    if (role === 'all') {
+      setFilteredData(isProspectData)
+    }
+    else {
+      setFilteredData(isProspectData.filter(data => {
+        if (data.role === role) {
+          return data;
+        }
+      }))
+    }
+  }
   const [view, setView] = useState('grid');
 
   const onChange = (checked) => {
@@ -37,7 +58,11 @@ const Prospects = () => {
 
   return (
     <main style={{ padding: "20px" }}>
-      <ContentHeader title={'Prospect'} modal={showModal} buttonInfo={'Add Prospect'}/>
+      <ContentHeader
+        title={"Prospect"}
+        modal={showModal}
+        buttonInfo={"Add Prospect"}
+      />
       <section
         className="classes.prospects-widget flex"
         style={{ gap: 20, marginTop: 20 }}
@@ -65,60 +90,73 @@ const Prospects = () => {
       </section>
       <section
         style={{ gap: 20, marginTop: 20 }}
-        className="flex flex-justify-between flex-center"
+        className=" flex flex-column"
       >
-        <div className="flex " style={{ gap: "5px", margin: "30px 0" }}>
-          <Button
-            style={{
-              width: "83px",
-              height: "42px",
-              borderRadius: "10px",
-              borderWidth: "1px",
-            }}
-          >
-            All
-          </Button>
-          <Button
-            style={{
-              width: "83px",
-              height: "42px",
-              borderRadius: "10px",
-              borderWidth: "1px",
-            }}
-          >
-            Cold
-          </Button>
-          <Button
-            style={{
-              width: "83px",
-              height: "42px",
-              borderRadius: "10px",
-              borderWidth: "1px",
-            }}
-          >
-            Warm
-          </Button>
-          <Button
-            style={{
-              width: "83px",
-              height: "42px",
-              borderRadius: "10px",
-              borderWidth: "1px",
-            }}
-          >
-            Contract
-          </Button>
+        <div>
+          <Search
+            placeholder="input search text"
+            onSearch={onSearch}
+            style={{width:200}}
+          />
         </div>
-        <Switch
-          checkedChildren="Table"
-          unCheckedChildren="Grid"
-          onChange={onChange}
-        />
+        <div className='flex flex-justify-between flex-center' >
+          <div className="flex " style={{ gap: "5px", margin: "30px 0" }}>
+            <Button
+              style={{
+                width: "83px",
+                height: "42px",
+                borderRadius: "10px",
+                borderWidth: "1px",
+              }}
+              onClick={() => handleFilteredData("all")}
+            >
+              All
+            </Button>
+            <Button
+              style={{
+                width: "83px",
+                height: "42px",
+                borderRadius: "10px",
+                borderWidth: "1px",
+              }}
+              onClick={() => handleFilteredData("cold")}
+            >
+              Cold
+            </Button>
+            <Button
+              style={{
+                width: "83px",
+                height: "42px",
+                borderRadius: "10px",
+                borderWidth: "1px",
+              }}
+              onClick={() => handleFilteredData("warm")}
+            >
+              Warm
+            </Button>
+            <Button
+              style={{
+                width: "83px",
+                height: "42px",
+                borderRadius: "10px",
+                borderWidth: "1px",
+              }}
+              onClick={() => handleFilteredData("contract")}
+            >
+              Contract
+            </Button>
+          </div>
+          <Switch
+            checkedChildren="Table"
+            unCheckedChildren="Grid"
+            onChange={onChange}
+          />
+        </div>
       </section>
       {view === "grid" && (
         <section className="flex" style={{ gap: 20, marginTop: 20 }}>
-          {prospectData &&
-            prospectData.map((prospect, index) => (
+          {filteredData &&
+            filteredData.map((prospect, index) => (
               <UserCard
                 key={index}
                 role={prospect.role}
