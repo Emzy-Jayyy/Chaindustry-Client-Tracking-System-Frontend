@@ -51,17 +51,17 @@ function App() {
             {path: 'project', element: <Projects />},
             {path: 'schedule', element: <Schedule />},
             {path: 'prospects', element: <Prospects />},
+            {path: 'prospects/:prospectsId', element: <Profile />},
             {path: 'clients', element: <Clients />},
-            {path: 'profile', element: <Profile />}
+            {path: 'clients/:clientsId', element: <Profile />},
+            // {path: 'profile', element: <Profile />}
           ] 
         },
       ],
     },
   ]);
   return (
-    <RouterProvider router={router}>
-
-    </RouterProvider>
+    <RouterProvider router={router} />
   )
 }
 

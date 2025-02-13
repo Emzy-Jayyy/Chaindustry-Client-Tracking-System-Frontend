@@ -58,9 +58,7 @@ const DashoardLayout = () => {
               <p style={{ fontWeight: 500 }}>Welcome {userName}</p>
             </div>
             <div className="flex flex-align" style={{ gap: 10 }}>
-              <Link to='profile'>
-                <Button icon={<UserOutlined />}></Button>
-              </Link>
+              <Button icon={<UserOutlined />}></Button>
               <Button icon={<AlertOutlined />}></Button>
             </div>
           </Header>
