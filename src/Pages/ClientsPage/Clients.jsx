@@ -176,9 +176,7 @@ const Clients = () => {
 
       {view === "table" && (
         <section style={{ marginTop: 20 }}>
-          <Link to='/dashboard/profile'>
            <ProspectsTable data={filteredData} />
-          </Link>
         </section>
       )}
     </main>

@@ -30,6 +30,7 @@ const ProspectsTable = ({ data, link }) => {
     },
   ];
 
+
   // function handleNavigate(index) {
   //   navigate(`/dashboard/prospects/${index}`)
   // }
