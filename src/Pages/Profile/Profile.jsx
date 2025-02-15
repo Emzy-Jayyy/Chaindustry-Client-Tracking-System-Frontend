@@ -2,13 +2,15 @@ import React from "react";
 import { Button, Form, Image, Input } from "antd";
 import { PlusCircleFilled } from "@ant-design/icons";
 
+import '../../Pages/Profile/Profile.css'
 import FormItem from "../../Components/UI/FormItem";
 import prospectImag from "./assets/pros.png";
 import FormTextArea from "../../Components/UI/FormTextArea";
+import CustomizedTable from "../../Components/Tables/CustomizedTable";
 
 const Profile = () => {
   return (
-    <div style={{ padding: 20 }}>
+    <div className="profile-container" style={{ padding: 20 }}>
       <header className="flex flex-justify-between flex-align">
         <h1 style={{ fontSize: "2rem" }}>Chaindustry Profile</h1>
         <Button icon={<PlusCircleFilled />}>Edit Profile</Button>
@@ -16,7 +18,7 @@ const Profile = () => {
 
       <section>
         <h2 style={{ fontSize: "1.2rem" }}>Prospects Data</h2>
-        <div className="flex flex-align" style={{ gap: "5rem" }}>
+        <div className="flex flex-align" style={{ gap: "2rem" }}>
           <Image width={187} height={280} src={prospectImag} />
           <Form layout="vertical" className="flex" style={{ gap: "5rem", flex: 1 }}>
             <div className="flex flex-column" style={{flexBasis: '45%'}}>
@@ -51,6 +53,46 @@ const Profile = () => {
             </div>
           </Form>
         </div>
+      </section>
+
+      <section className="profile-section">
+        <div className="flex flex-justify-between profile-section-details">
+          <h2 style={{ fontSize: "1.2rem" }}>Staff Information</h2>
+          <Button style={{fontWeight: 'bold'}}>ADD STAFF</Button>
+        </div>
+        <CustomizedTable type={'staff-information'}/>
+      </section>
+
+      <section className="profile-section">
+        <div className="flex flex-justify-between profile-section-details">
+          <h2 style={{ fontSize: "1.2rem" }}>Schedules</h2>
+          <Button style={{fontWeight: 'bold'}}>ADD SCHEDULE</Button>
+        </div>
+        <CustomizedTable type={'schedules'}/>
+      </section>
+
+      <section className="profile-section">
+        <div className="flex flex-justify-between profile-section-details">
+          <h2 style={{ fontSize: "1.2rem" }}>Connections with Prospect</h2>
+          <Button style={{fontWeight: 'bold'}}>CONTACTED</Button>
+        </div>
+        <CustomizedTable type={'contacted'}/>
+      </section>
+
+      <section className="profile-section">
+        <div className="flex flex-justify-between profile-section-details">
+          <h2 style={{ fontSize: "1.2rem" }}>Income per month</h2>
+          <Button style={{fontWeight: 'bold'}}>ADD INCOME</Button>
+        </div>
+        <CustomizedTable type={'income'}/>
+      </section>
+
+      <section className="profile-section">
+        <div className="flex flex-justify-between profile-section-details">
+          <h2 style={{ fontSize: "1.2rem" }}>Project</h2>
+          <Button style={{fontWeight: 'bold'}}>ADD PROJECT</Button>
+        </div>
+        <CustomizedTable type={'project'}/>
       </section>
     </div>
   );

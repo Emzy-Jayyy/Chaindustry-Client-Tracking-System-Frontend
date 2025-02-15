@@ -1,25 +1,24 @@
-import { useState } from 'react'
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
+import { useState } from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 /*  ------- PAGES ------  */
-import Dashboard from './Pages/Dashboard/Dashboard';
-import NotFound from './Pages/NotFound/NotFound';
-import Profile from './Pages/Profile/Profile';
-import Prospects from './Pages/Prospects/Prospects';
-import Schedule from './Pages/Schedule/Schedule';
-import Login from './Pages/Login/Login';
-import Signup from './Pages/Signup/Signup';
-import Projects from './Pages/Projects/Projects';
-import ForgotPassword from './Pages/Forgotpassword/ForgotPassword';
+import Dashboard from "./Pages/Dashboard/Dashboard";
+import NotFound from "./Pages/NotFound/NotFound";
+import Profile from "./Pages/Profile/Profile";
+import Prospects from "./Pages/Prospects/Prospects";
+import Schedule from "./Pages/Schedule/Schedule";
+import Login from "./Pages/Login/Login";
+import Signup from "./Pages/Signup/Signup";
+import Projects from "./Pages/Projects/Projects";
+import ForgotPassword from "./Pages/Forgotpassword/ForgotPassword";
 
 /*  ------- LAYOUTS ------  */
-import RootLayout from './Layouts/RootLayout';
-import DashoardLayout from './Layouts/DashoardLayout';
-import './App.css'
-import Clients from './Pages/ClientsPage/Clients';
+import RootLayout from "./Layouts/RootLayout";
+import DashoardLayout from "./Layouts/DashoardLayout";
+import "./App.css";
+import Clients from "./Pages/ClientsPage/Clients";
+import ProspectContextProvider from "./store/prospect-context";
+import ClientContextProvider from "./store/clients-context";
 
 function App() {
   // const routes = createRoutesFromElements(
@@ -44,25 +43,31 @@ function App() {
         { path: "signup", element: <Signup /> },
         { path: "forgot", element: <ForgotPassword /> },
         {
-          path: "dashboard", 
+          path: "dashboard",
           element: <DashoardLayout />,
           children: [
-            {index: true, element: <Dashboard />},
-            {path: 'project', element: <Projects />},
-            {path: 'schedule', element: <Schedule />},
-            {path: 'prospects', element: <Prospects />},
-            {path: 'prospects/:prospectsId', element: <Profile />},
-            {path: 'clients', element: <Clients />},
-            {path: 'clients/:clientsId', element: <Profile />},
+            { index: true, element: <Dashboard /> },
+            { path: "project", element: <Projects /> },
+            { path: "schedule", element: <Schedule /> },
+            { path: "prospects", element: <Prospects /> },
+            { path: "prospects/:prospectsId", element: <Profile /> },
+            { path: "clients", element: <Clients /> },
+            { path: "clients/:clientsId", element: <Profile /> },
             // {path: 'profile', element: <Profile />}
-          ] 
+          ],
         },
       ],
     },
   ]);
   return (
-    <RouterProvider router={router} />
-  )
+    <>
+     <ClientContextProvider>
+      <ProspectContextProvider>
+        <RouterProvider router={router} />
+      </ProspectContextProvider>
+    </ClientContextProvider>
+    </>
+  );
 }
 
-export default App
+export default App;

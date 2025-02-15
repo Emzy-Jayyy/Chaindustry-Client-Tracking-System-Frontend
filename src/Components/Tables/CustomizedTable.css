@@ -1,0 +1,7 @@
+/* Change Table Header Background */
+.ant-table-thead > tr > th {
+    background-color: #3d3f41 !important;
+    color: #e0f857 !important;
+    /* font-weight: bold; */
+  }
+  

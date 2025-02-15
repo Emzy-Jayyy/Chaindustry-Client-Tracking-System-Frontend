@@ -3,5 +3,18 @@
     border: 0.7px solid #ddd;
     border-radius:  8px;
     padding: 10px;
-    
+    max-width: '387px';
 }
+
+
+/* .user-card-holder {
+    border: 0.7px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+}  */
+
+

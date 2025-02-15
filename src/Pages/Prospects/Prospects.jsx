@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Modal, Switch, Input, Space } from "antd";
 import Widgets from "../../Components/Widgets/Widgets";
@@ -15,50 +15,27 @@ import UserCard from "../../Components/UserCards/UserCard";
 import ProspectsTable from "../../Components/Tables/ProspectsTable";
 import { Form } from "react-router-dom";
 import ContentHeader from "../../Components/ContentHeader/ContentHeader";
-// import Tab from '../../Components/Tabs/Tab'
+import { ProspectContext } from "../../store/prospect-context";
+// import { PROSPECTDATA } from "../../ProspectData";
 
 const Prospects = () => {
-  const [isProspectData, setIsProspectData] = useState([
-    {
-      key: "1",
-      role: "warm",
-      portfolioLink:
-        "https://www.figma.com/aigsiufgsuifgdsuifsuifsuifsuidfsuifsuif",
-      socialHandle: "@chaindustry",
-      name: "chaindustry",
-    },
-    {
-      key: "2",
-      role: "cold",
-      portfolioLink:
-        "https://www.figma.com/sidfsiufsuifsduifsduifsduifuisdfuisdfsd",
-      socialHandle: "@chaindustry",
-      name: "EstateX",
-    },
-    {
-      key: "3",
-      role: "contract",
-      portfolioLink:
-        "https://www.figma.com/fuisfsuifsduifsduifduifsduifsduifsd",
-      socialHandle: "@chaindustry",
-      name: "Planck Network",
-    },
-  ]);
+  // const [isProspectData, setIsProspectData] = useState(PROSPECTDATA);
 
+  const { prospectData } = useContext(ProspectContext);
   const [filteredData, setFilteredData] = useState([]);
   const [view, setView] = useState("grid");
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
-    setFilteredData(isProspectData);
-  }, [isProspectData]);
+    setFilteredData(prospectData);
+  }, [prospectData]);
 
   function handleFilteredData(role) {
     if (role === "all") {
-      setFilteredData(isProspectData);
+      setFilteredData(prospectData);
     } else {
       setFilteredData(
-        isProspectData.filter((data) => {
+        prospectData.filter((data) => {
           if (data.role === role) {
             return data;
           }
@@ -75,7 +52,7 @@ const Prospects = () => {
   const onSearch = (value, _e, info) => {
     console.log(info?.source, value);
     setFilteredData(
-      isProspectData.filter((data) => {
+      prospectData.filter((data) => {
         const searchValue = value.toLowerCase();
         return JSON.stringify(data).toLowerCase().includes(searchValue);
       })
@@ -107,31 +84,31 @@ const Prospects = () => {
         <Widgets
           icon={<ProspectsIcon width={50} height={45} />}
           text="All Prospects"
-          matrixs={50}
+          matrixs={prospectData.length}
         />
         <Widgets
           icon={<ColdProspectIcon width={50} height={45} />}
           text="Cold Prospects"
-          matrixs={50}
+          matrixs={prospectData.filter((p) => p.role === "cold").length}
         />
         <Widgets
           icon={<WarmProspectIcon width={50} height={45} />}
           text="Warm Prospects"
-          matrixs={50}
+          matrixs={prospectData.filter((p) => p.role === "warm").length}
         />
         <Widgets
           icon={<ContractsIcon width={50} height={45} />}
           text="Contracts"
-          matrixs={50}
+          matrixs={prospectData.filter((p) => p.role === "contract").length}
         />
       </section>
 
-      <section style={{ gap: 20, marginTop: 20 }} className=" flex flex-column">
+      <section style={{ gap: 0, marginTop: 40 }} className=" flex flex-column">
         <div>
           <Search
             placeholder="input search text"
             onSearch={onSearch}
-            style={{ width: 200 }}
+            style={{ width: 345 }}
           />
         </div>
         <div className="flex flex-justify-between flex-center">
@@ -190,7 +167,10 @@ const Prospects = () => {
       </section>
 
       {view === "grid" && (
-        <section className="flex" style={{ gap: 20, marginTop: 20 }}>
+        <section
+          className="user-card-container"
+          style={{ gap: 20, marginTop: 20 }}
+        >
           {filteredData &&
             filteredData.map((prospect, index) => (
               <UserCard

@@ -1,0 +1,22 @@
+.user-card-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Three columns */
+    gap: 20px;
+    /* Space between cards */
+    margin-top: 20px;
+  }
+  
+  @media (max-width: 1024px) {
+    .user-card-container {
+      grid-template-columns: repeat(2, 1fr);
+      /* Two columns for medium screens */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .user-card-container {
+      grid-template-columns: repeat(1, 1fr);
+      /* Single column for small screens */
+    }
+  }
