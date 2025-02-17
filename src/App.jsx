@@ -11,12 +11,18 @@ import Login from "./Pages/Login/Login";
 import Signup from "./Pages/Signup/Signup";
 import Projects from "./Pages/Projects/Projects";
 import ForgotPassword from "./Pages/Forgotpassword/ForgotPassword";
+import EditPage from "./Pages/EditProfilePage/EditPage";
+import ClientProfile from "./Pages/Profile/ClientProfile";
 
 /*  ------- LAYOUTS ------  */
 import RootLayout from "./Layouts/RootLayout";
 import DashoardLayout from "./Layouts/DashoardLayout";
 import "./App.css";
 import Clients from "./Pages/ClientsPage/Clients";
+import ProspectProfileLayout from "./Layouts/ProspectProfileLayout";
+import ClientsProfileLayout from "./Layouts/ClientsProfileLayout";
+
+/* -------- Context API------- */
 import ProspectContextProvider from "./store/prospect-context";
 import ClientContextProvider from "./store/clients-context";
 
@@ -49,11 +55,38 @@ function App() {
             { index: true, element: <Dashboard /> },
             { path: "project", element: <Projects /> },
             { path: "schedule", element: <Schedule /> },
-            { path: "prospects", element: <Prospects /> },
-            { path: "prospects/:prospectsId", element: <Profile /> },
-            { path: "clients", element: <Clients /> },
-            { path: "clients/:clientsId", element: <Profile /> },
-            // {path: 'profile', element: <Profile />}
+            {
+              path: "prospects",
+              element: <ProspectProfileLayout />,
+              children: [
+                { index: true, element: <Prospects /> },
+                {
+                  path: ":prospectsId",
+                  children: [
+                    { index: true, element: <Profile /> },
+                    { path: "edit", element: <EditPage /> },
+                  ],
+                },
+              ],
+            },
+            {
+              path: "clients",
+              element: <ClientsProfileLayout />,
+              children: [
+                { index: true, element: <Clients /> },
+                {
+                  path: ":clientsId",
+                  children: [
+                    { index: true, element: <ClientProfile /> },
+                    { path: "edit", element: <EditPage /> },
+                  ],
+                },
+              ],
+            },
+            // { path: "prospects", element: <Prospects /> },
+            // { path: "prospects/:prospectsId", element: <Profile /> },
+            // { path: "clients", element: <Clients /> },
+            // { path: "clients/:clientsId", element: <Profile /> },
           ],
         },
       ],

@@ -179,7 +179,7 @@ const Prospects = () => {
                 name={prospect.name}
                 portfolioLink={prospect.portfolioLink}
                 socialHandle={prospect.socialHandle}
-                link={`${index}`}
+                link={prospect.key}
               />
             ))}
         </section>

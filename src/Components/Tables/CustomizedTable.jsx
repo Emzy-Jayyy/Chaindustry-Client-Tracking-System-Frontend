@@ -87,7 +87,7 @@ const CustomizedTable = ({ type }) => {
         { title: "STATUS", dataIndex: "status", key: "status" },
       ];
       data = [
-        { key: "1",  serialNumber: "1", project: '', amount: '', date: '', status: '', amount: ''},
+        { key: "1",  serialNumber: "1", project: '', amount: '', date: '', status: ''},
         // { key: "2", productName: "Phone", price: 599, stock: 50 },
       ];
       break;

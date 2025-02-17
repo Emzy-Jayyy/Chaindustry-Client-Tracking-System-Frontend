@@ -48,7 +48,7 @@ const Clients = () => {
   const onSearch = (value, _e, info) => {
     console.log(info?.source, value);
     setFilteredData(
-      isProspectData.filter((data) => {
+      prospectData.filter((data) => {
         const searchValue = value.toLowerCase();
         return JSON.stringify(data).toLowerCase().includes(searchValue);
       })
@@ -155,7 +155,7 @@ const Clients = () => {
                 name={prospect.name}
                 portfolioLink={prospect.portfolioLink}
                 socialHandle={prospect.socialHandle}
-                link={`${index}`}
+                link={prospect.key}
               />
             ))}
         </section>

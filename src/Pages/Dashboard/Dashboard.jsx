@@ -11,6 +11,7 @@ import LineChart from "../../Components/Graphs/LineChart";
 import PieChart from "../../Components/Graphs/PieChart";
 import GroupedBarChart from "../../Components/Graphs/BarChart";
 import Tables from "../../Components/Tables/Tables";
+import MapComponent from "../../Components/Maps/MapComponent";
 
 const Dashboard = () => {
   const { prospectData } = useContext(ProspectContext);
@@ -41,16 +42,18 @@ const Dashboard = () => {
       </section>
       <section
         style={{
-          padding: "20px",
-          width: "80vw",
-          height: "300px",
-          backgroundColor: "gray",
-          marginTop: "40px",
-          borderRadius: "5px",
+          // padding: "20px",
+          // width: "80vw",
+          // height: "300px",
+          // backgroundColor: "gray",
+          // marginTop: "40px",
+          // borderRadius: "5px",
+          marginTop: "40px"
         }}
-        className="flex flex-center"
+        className="flex flex-center flex-column"
       >
         <h2>Client Location</h2>
+        <MapComponent />
       </section>
       <section style={{ marginTop: "40px" }}>
         <Tables />

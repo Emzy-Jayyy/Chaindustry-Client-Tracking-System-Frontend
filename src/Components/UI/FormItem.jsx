@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input } from "antd";
 
 
-const FormItem = ({firstLabel, secondLabel, thirdLabel, fourthLabel}) => {
+const FormItem = ({firstLabel, secondLabel, thirdLabel, fourthLabel,twitter, portfolioLink }) => {
 
   return (
     <>
@@ -13,9 +13,9 @@ const FormItem = ({firstLabel, secondLabel, thirdLabel, fourthLabel}) => {
         <Input size="large"  />
       </Form.Item>
       <Form.Item name={thirdLabel.toLowerCase()} label={<strong>{thirdLabel}</strong>}>
-        <Input size="large"  />
+        <Input size="large" defaultValue={thirdLabel === "Portfolio Link" ? portfolioLink : twitter} />
       </Form.Item>
-      <Form.Item name={thirdLabel.toLowerCase()} label={<strong>{fourthLabel}</strong>}>
+      <Form.Item name={fourthLabel.toLowerCase()} label={<strong>{fourthLabel}</strong>}>
         <Input size="large" />
       </Form.Item>
     </>

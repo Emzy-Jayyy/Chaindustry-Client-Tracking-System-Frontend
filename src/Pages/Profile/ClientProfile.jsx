@@ -6,24 +6,23 @@ import { Button, Form, Image, Input } from "antd";
 import { PlusCircleFilled } from "@ant-design/icons";
 import { ProspectContext } from "../../store/prospect-context";
 
-import "../../Pages/Profile/Profile.css";
+import "../../Pages/Profile/ClientProfile.css";
 import FormItem from "../../Components/UI/FormItem";
 import prospectImag from "./assets/pros.png";
 import FormTextArea from "../../Components/UI/FormTextArea";
 import CustomizedTable from "../../Components/Tables/CustomizedTable";
 
-const Profile = () => {
-  const { prospectsId} = useParams();
+const ClientProfile = () => {
+  const { clientsId } = useParams();
   // const { clientsId } = useParams();
   const { prospectData } = useContext(ProspectContext);
 
-  const prospect = prospectData.find(prospect => prospect.key === prospectsId);
-  // const client = prospectData.find(prospect => prospect.key === clientsId);
+  const client = prospectData.find(prospect => prospect.key === clientsId);
 
   return (
     <div className="profile-container" style={{ padding: 20 }}>
       <header className="flex flex-justify-between flex-align">
-        <h1 style={{ fontSize: "2rem" }}>{`${prospect.name} Profile`}</h1>
+        <h1 style={{ fontSize: "2rem" }}>{`${client.name} Profile`}</h1>
         <Link to={"edit"}>
           <Button icon={<PlusCircleFilled />}>Edit Profile</Button>
         </Link>
@@ -44,8 +43,8 @@ const Profile = () => {
                 secondLabel={"Discord"}
                 thirdLabel={"Portfolio Link"}
                 fourthLabel={"Location"}
-                twitter={prospect.socialHandle}
-                portfolioLink = {prospect.portfolioLink}
+                twitter={client.socialHandle}
+                portfolioLink = {client.portfolioLink}
               />
             </div>
             <div className="flex flex-column" style={{ flexBasis: "45%" }}>
@@ -54,8 +53,8 @@ const Profile = () => {
                 secondLabel={"LinkedIn"}
                 thirdLabel={"Twitter"}
                 fourthLabel={"Financial Level"}
-                twitter={prospect.socialHandle}
-                portfolioLink = {prospect.portfolioLink}
+                twitter={client.socialHandle}
+                portfolioLink = {client.portfolioLink}
               />
             </div>
           </Form>
@@ -125,4 +124,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default ClientProfile;
